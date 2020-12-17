@@ -1,0 +1,13 @@
+
+  <form >
+    <input placeholder="Username" (input)="userInputHandle($event)" />
+
+    <input
+      type="password"
+      placeholder="Password"
+      (input)="pwdInputHandle($event)"
+    />
+
+    <button (click)="login()">Log in</button>
+  </form>
+
