@@ -22,9 +22,9 @@ export class HomeComponent implements OnInit {
   getdata() {
     this.http.get('http://localhost:3000/get').subscribe(res => {
       // console.log(JSON.parse(JSON.stringify(res)).statusCode)
-      let code = JSON.parse(JSON.stringify(res)).statusCode
-      if (code !== 201) {
-        alert('token过期')
+      let code = JSON.parse(JSON.stringify(res)).code
+      if ( code !== 200) {
+
         this.router.navigate(['/login'])
       }
       this.data = JSON.parse(JSON.stringify(res)).data;

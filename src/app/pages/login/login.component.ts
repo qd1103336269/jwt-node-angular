@@ -38,16 +38,28 @@ export class LoginComponent implements OnInit {
     this.http.post("http://localhost:3000/login", {username: this.userValue, password: this.pwdValue}, {}).subscribe((res: any) => {
       console.log(res)
       if(res.code === 401) {
-        alert('用户名或者密码错误')
+
         this.router.navigate(['/login'])
-      }else if(res.code === 201) {
+      }else if(res.code === 200) {
         localStorage.setItem('token', res.token)
       this.router.navigate(['/home'])
       }
 
     })
   }
+  register() {
+    this.http.post("http://localhost:3000/register", {username: this.userValue, password: this.pwdValue}, {}).subscribe((res: any) => {
+      console.log(res)
+      if(res.code !== 200) {
+        alert('注册失败')
+        this.router.navigate(['/login'])
+      }else if(res.code === 200) {
+        alert('注册成功请登录')
+        this.router.navigate(['/login'])
+      }
 
+    })
+  }
   userInputHandle(e) {
     // console.log(e.target.value)
     this.userValue = e.target.value

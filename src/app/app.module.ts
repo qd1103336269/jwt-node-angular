@@ -14,6 +14,8 @@ import { registerLocaleData } from '@angular/common';
 import zh from '@angular/common/locales/zh';
 import { NzButtonModule } from 'ng-zorro-antd/button';
 import { TokenInterceptor } from './app.service';
+import { AuthInterceptor } from './auth';
+import { ErrPageComponent } from './err-page/err-page.component';
 
 registerLocaleData(zh);
 
@@ -21,7 +23,8 @@ registerLocaleData(zh);
   declarations: [
     AppComponent,
     LoginComponent,
-    HomeComponent
+    HomeComponent,
+    ErrPageComponent
   ],
   imports: [
     BrowserModule,
@@ -37,7 +40,7 @@ registerLocaleData(zh);
     provide: HTTP_INTERCEPTORS,
     useClass: TokenInterceptor,
     multi: true
-  },],
+  }],
   bootstrap: [AppComponent]
 })
 export class AppModule { }

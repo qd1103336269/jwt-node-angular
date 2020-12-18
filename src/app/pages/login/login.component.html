@@ -1,13 +1,49 @@
+<div class="login">
+  <form
+  nz-form
+  [formGroup]="validateForm"
+  class="login-form"
+  (ngSubmit)="submitForm()"
+>
+  <nz-form-item>
+    <nz-form-control nzErrorTip="Please input your username!">
+      <input
+        type="text"
+        nz-input
+        formControlName="userName"
+        placeholder="用户名"
+        (input)="userInputHandle($event)"
+      />
+    </nz-form-control>
+  </nz-form-item>
+  <nz-form-item>
+    <nz-form-control nzErrorTip="Please input your Password!">
+      <input
+        type="password"
+        nz-input
+        formControlName="password"
+        placeholder="密码"
+        (input)="pwdInputHandle($event)"
+      />
+    </nz-form-control>
+  </nz-form-item>
 
-  <form >
-    <input placeholder="Username" (input)="userInputHandle($event)" />
+  <button
+    nz-button
+    class="login-form-button login-form-margin"
+    [nzType]="'primary'"
+    (click)="login()"
+  >
+    登录
+  </button>
+  <button
+    nz-button
+    class="login-form-button login-form-margin"
+    [nzType]="'primary'"
+    (click)="register()"
+  >
+    注册
+  </button>
 
-    <input
-      type="password"
-      placeholder="Password"
-      (input)="pwdInputHandle($event)"
-    />
-
-    <button (click)="login()">Log in</button>
-  </form>
-
+</form>
+</div>
